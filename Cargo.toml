@@ -1,0 +1,10 @@
+[package]
+name = "cli_utils"
+version = "0.1.0"
+edition = "2021"
+description = "Creat clone of famous linux CLI commands like echo, cat, ls, find, grep"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
+[dependencies]
