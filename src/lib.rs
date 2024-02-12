@@ -2,10 +2,12 @@ use std::fmt;
 
 mod echo;
 mod cat;
+mod ls;
 
-pub enum Commands {
+enum Commands {
     Echo,
     Cat,
+    Ls,
     Invalid
 }
 
@@ -22,6 +24,10 @@ pub fn validate_args(args: &Vec<String>) -> Result<Box<dyn Execute>, String> {
                     let c = cat::validate_args_for_cat(&args[2..].to_vec())?;
                     return Ok(Box::new(c))
                 },
+                Commands::Ls => {
+                    let l = ls::validate_args_for_ls(&args[2..].to_vec())?;
+                    return Ok(Box::new(l))
+                },
                 Commands::Invalid => Err("Invalid command passed".to_string())
             }
         },
@@ -29,10 +35,11 @@ pub fn validate_args(args: &Vec<String>) -> Result<Box<dyn Execute>, String> {
     }
 }
 
-pub fn get_command(cmd: String) -> Commands {
+fn get_command(cmd: String) -> Commands {
     match cmd.as_str() {
         "echo" => Commands::Echo,
         "cat" => Commands::Cat,
+        "ls" => Commands::Ls,
         _ => Commands::Invalid
     }
 }
