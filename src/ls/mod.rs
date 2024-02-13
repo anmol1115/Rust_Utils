@@ -12,7 +12,7 @@ pub struct Ls {
 }
 
 impl Ls {
-    pub fn new(path: String) -> Ls {
+    fn new(path: String) -> Ls {
         Ls {path, long: false, all: false, help: false}
     }
 }

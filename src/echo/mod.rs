@@ -9,7 +9,7 @@ pub struct Echo {
 }
 
 impl Echo {
-    pub fn new(input: String) -> Echo {
+    fn new(input: String) -> Echo {
         Echo {
             message: input, to_uppercase: false, to_lowercase: false, help: false
         }
