@@ -19,7 +19,11 @@ impl Find {
 impl Execute for Find {
     fn execute_command(&self) {
         if self.help {
-            println!("Help message")
+            let message = r#"[USAGE]
+find [options...] path/to/dir expression
+    -t type     search for specific file type. Allowed values 'file' and 'dir'
+    -h          print help for the command"#;
+            println!("{message}");
         } else {
             let mut res = Vec::new();
 

@@ -20,7 +20,12 @@ impl Ls {
 impl Execute for Ls {
     fn execute_command(&self) {
         if self.help {
-            println!("Help message");
+            let message = r#"[USAGE]
+ls [options...] path/to/dir
+    -l          list files in long format
+    -a          list all files including hidden files
+    -h          print help message for the command"#;
+            println!("{message}");
         } else {
             if let Ok(files) = fs::read_dir(&self.path) {
                 for file in files {

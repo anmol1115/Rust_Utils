@@ -20,7 +20,12 @@ impl Cat {
 impl Execute for Cat {
     fn execute_command(&self) {
         if self.help {
-            println!("Help message");
+            let message = r#"[USAGE]
+cat [options...] message
+    -a count    print 'count' number of lines from the top
+    -t count    print 'count' number of lines from the bottom
+    -h          print help for the command"#;
+            println!("{message}");
         } else {
             let content: Vec<&str> = self.content.split('\n').collect();
 

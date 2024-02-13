@@ -19,7 +19,12 @@ impl Echo {
 impl Execute for Echo {
     fn execute_command(&self) {
         if self.help {
-            println!("Help message");
+            let message = r#"[USAGE]
+cat [options...] path/to/file
+    -l          print message in all lowercase
+    -u          print message in all lowercase
+    -h          print help for the command"#;
+            println!("{message}");
         } else {
             if self.to_lowercase {
                 println!("{}", self.message.to_lowercase());

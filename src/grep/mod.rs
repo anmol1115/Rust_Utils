@@ -18,7 +18,11 @@ impl Grep {
 impl Execute for Grep {
     fn execute_command(&self) {
         if self.help {
-            println!("Help message")
+            let message = r#"[USAGE]
+grep [options...] path/to/dir expression
+    -c          Turn case sensitivity OFF. Default is ON
+    -h          print help for the message"#;
+            println!("{message}");
         } else {
             if let Ok(content) = fs::read_to_string(&self.path) {
                 for line in content.split('\n') {
