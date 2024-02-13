@@ -4,12 +4,14 @@ mod echo;
 mod cat;
 mod ls;
 mod find;
+mod grep;
 
 enum Commands {
     Echo,
     Cat,
     Ls,
     Find,
+    Grep,
     Invalid
 }
 
@@ -33,7 +35,11 @@ pub fn validate_args(args: &Vec<String>) -> Result<Box<dyn Execute>, String> {
                 Commands::Find => {
                     let f = find::validate_args_for_find(&args[2..].to_vec())?;
                     return Ok(Box::new(f))
-                }
+                },
+                Commands::Grep => {
+                    let g = grep::validate_args_for_grep(&args[2..].to_vec())?;
+                    return Ok(Box::new(g))
+                },
                 Commands::Invalid => Err("Invalid command passed".to_string())
             }
         },
@@ -47,6 +53,7 @@ fn get_command(cmd: String) -> Commands {
         "cat" => Commands::Cat,
         "ls" => Commands::Ls,
         "find" => Commands::Find,
+        "grep" => Commands::Grep,
         _ => Commands::Invalid
     }
 }
