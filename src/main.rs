@@ -4,6 +4,8 @@ use cli_utils::validate_args;
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let res = validate_args(&args).expect("msg");
-    res.execute_command();
+    match validate_args(&args) {
+        Ok(res) => res.execute_command(),
+        Err(e) => println!("{e}")
+    }
 }

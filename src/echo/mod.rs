@@ -20,7 +20,7 @@ impl Execute for Echo {
     fn execute_command(&self) {
         if self.help {
             let message = r#"[USAGE]
-cat [options...] path/to/file
+echo [options...] message
     -l          print message in all lowercase
     -u          print message in all lowercase
     -h          print help for the command"#;
